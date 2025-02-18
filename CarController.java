@@ -49,7 +49,7 @@ public class CarController {
                 vehicle.move();
                 int x = (int) Math.round(vehicle.getPosition()[0]);
                 int y = (int) Math.round(vehicle.getPosition()[1]);
-                frame.drawPanel.moveit(x, y, vehicle);
+                frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -63,5 +63,13 @@ public class CarController {
                 ) {
             vehicle.gas(gas);
         }
+    }
+    void turboOn(){
+        for (Vehicle vehicle : vehicles){
+            if(vehicle.getModelName().equals("Saab95")){
+                vehicle
+            }
+        }
+
     }
 }

@@ -84,6 +84,8 @@ public abstract class Vehicle implements Movable {
         currentSpeed = 0;
     }
 
+    public String getModelName(){return modelName;}
+
     public void gas(double amount){
         if(amount <= 1 && amount>0){
             incrementSpeed(amount);
