@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Map;
 
 
 // This panel represents the animated part of the view with the car images.
@@ -16,6 +16,8 @@ import java.util.HashMap;
 public class DrawPanel extends JPanel{
     HashMap<Vehicle, Point> vehiclePositions = new HashMap<>();
     HashMap<Workshop, Point> workshopPoints = new HashMap<>();
+    //HashMap<Vehicle, BufferedImage> imagevehicle = new HashMap<>();
+
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
     // To keep track of a single car's position
@@ -32,17 +34,14 @@ public class DrawPanel extends JPanel{
 
     // TODO: Make this general for all cars
     void moveit(int x, int y, Vehicle vehicle){
-        vehiclePositions.get(vehicle).setLocation(x,y);
+        vehiclePositions.put(vehicle, new Point(x, y));//.setLocation(x,y);
         //vehiclePositions.get(vehicle).y = y;
         repaint();
-        System.out.println(vehiclePositions);
+
     }
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
-        vehiclePositions.put(new Saab95(), saab95Point);
-        vehiclePositions.put(new Volvo240(), volvoPoint);
-        vehiclePositions.put(new Scania(), scaniaPoint);
         workshopPoints.put(new Saab95Workshop(5), saab95WorkshopPoint);
 
         this.setDoubleBuffered(true);
@@ -77,6 +76,11 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        for (Map.Entry<Vehicle, Point> entry : vehiclePositions.entrySet()) {
+            Vehicle toDraw = entry.getKey();
+            Point whereToDraw = entry.getValue();
+        }
+
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);// see javadoc for more info on the parameter
         g.drawImage(saab95Image, saab95Point.x, saab95Point.y, null); // see javadoc for more info on the parameters
