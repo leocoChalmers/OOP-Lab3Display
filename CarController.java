@@ -1,3 +1,5 @@
+import lab2.Saab95;
+import lab2.Scania;
 import lab2.Vehicle;
 
 import javax.swing.*;
@@ -31,7 +33,7 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        //cc.cars.add(new Volvo240());
+        cc.vehicles.add(new Saab95());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -49,7 +51,24 @@ public class CarController {
                 vehicle.move();
                 int x = (int) Math.round(vehicle.getPosition()[0]);
                 int y = (int) Math.round(vehicle.getPosition()[1]);
-                frame.drawPanel.moveit(x, y);
+                System.out.println(y);
+                if (0 <= x && x < frame.drawPanel.getWidth() && 0 <= y && y < frame.drawPanel.getHeight()){
+                    frame.drawPanel.moveit(x, y);
+                }
+                else{
+                    stop();
+                    start();
+                    turnRight();
+                    turnRight();
+                    while(x<0 || y<0){
+                        vehicle.move();
+                        x = (int) Math.round(vehicle.getPosition()[0]);
+                        y = (int) Math.round(vehicle.getPosition()[1]);
+                        //System.out.println(vehicle.getCurrentSpeed());
+                        //frame.drawPanel.moveit(x, y);
+                        //frame.drawPanel.repaint();
+                    }
+                }
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -59,17 +78,57 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicles
-                ) {
+        for (Vehicle vehicle : vehicles)
             vehicle.gas(gas);
-        }
+    }
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Vehicle vehicle : vehicles)
+            vehicle.brake(brake);
     }
     void turboOn(){
         for (Vehicle vehicle : vehicles){
-            if(vehicle.getModelName().equals("Saab95")){
-                vehicle
-            }
+            if(vehicle instanceof Saab95)
+                ((Saab95) vehicle).setTurboOn();
+        }
+    }
+    void turboOff(){
+        for (Vehicle vehicle : vehicles){
+            if(vehicle instanceof Saab95)
+                ((Saab95) vehicle).setTurboOff();
+        }
+    }
+    void liftBed(){
+        for (Vehicle vehicle : vehicles){
+            if(vehicle instanceof Scania)
+                ((Scania) vehicle).raiseBedAngle();
         }
 
+    }
+    void lowerBed(){
+        for (Vehicle vehicle : vehicles){
+            if(vehicle instanceof Scania)
+                ((Scania) vehicle).lowerBedAngle();
+        }
+    }
+    void turnRight(){
+        for (Vehicle vehicle : vehicles){
+            vehicle.turnRight();
+        }
+    }
+    void turnLeft(){
+        for (Vehicle vehicle : vehicles){
+            vehicle.turnLeft();
+        }
+    }
+    void start(){
+        for (Vehicle vehicle : vehicles) {
+            vehicle.startEngine();
+        }
+    }
+    void stop(){
+        for (Vehicle vehicle : vehicles) {
+            vehicle.stopEngine();
+        }
     }
 }
