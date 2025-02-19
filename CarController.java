@@ -1,6 +1,4 @@
-import lab2.Saab95;
-import lab2.Scania;
-import lab2.Vehicle;
+import lab2.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -26,7 +24,7 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Vehicle> vehicles = new ArrayList<>();
-
+    ArrayList<Workshop> workshops = new ArrayList<>();
     //methods:
 
     public static void main(String[] args) {
@@ -34,7 +32,10 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.vehicles.add(new Saab95());
+        cc.vehicles.add(new Volvo240());
+        cc.vehicles.add(new Scania());
 
+        cc.workshops.add(new Saab95Workshop(5));
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
@@ -51,9 +52,9 @@ public class CarController {
                 vehicle.move();
                 int x = (int) Math.round(vehicle.getPosition()[0]);
                 int y = (int) Math.round(vehicle.getPosition()[1]);
-                System.out.println(y);
+
                 if (0 <= x && x < frame.drawPanel.getWidth() && 0 <= y && y < frame.drawPanel.getHeight()){
-                    frame.drawPanel.moveit(x, y);
+                    frame.drawPanel.moveit(x,y,vehicle);
                 }
                 else{
                     stop();
@@ -64,14 +65,18 @@ public class CarController {
                         vehicle.move();
                         x = (int) Math.round(vehicle.getPosition()[0]);
                         y = (int) Math.round(vehicle.getPosition()[1]);
-                        //System.out.println(vehicle.getCurrentSpeed());
-                        //frame.drawPanel.moveit(x, y);
-                        //frame.drawPanel.repaint();
                     }
                 }
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
+
+            if (Math.abs(frame.drawPanel.saab95Point.getX() - frame.drawPanel.saab95WorkshopPoint.getX()) <= 5 ||
+                    Math.abs(frame.drawPanel.saab95Point.getY() - frame.drawPanel.saab95WorkshopPoint.getY()) <= 5){
+
+
+
+                }
         }
     }
 
