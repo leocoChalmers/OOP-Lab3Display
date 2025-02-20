@@ -11,6 +11,7 @@ public abstract class Vehicle implements Movable {
     protected double[] position = {0,0}; //X, Y positioning
     protected int direction = 0; //0 = North, 1 = East, 2 = South, 3 = West
     protected String modelName;
+    protected boolean engineOn = false;
 
     public Vehicle(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition){
         this.modelName = modelName;
@@ -79,16 +80,18 @@ public abstract class Vehicle implements Movable {
 
     public void startEngine(){
         currentSpeed = 0.1;
+        engineOn = true;
     }
 
     public void stopEngine(){
         currentSpeed = 0;
+        engineOn = false;
     }
 
     public String getModelName(){return modelName;}
 
     public void gas(double amount){
-        if(amount <= 1 && amount>0){
+        if(amount <= 1 && amount>0 && engineOn){
             incrementSpeed(amount);
         } else {
             throw new IllegalArgumentException("Too much gas");

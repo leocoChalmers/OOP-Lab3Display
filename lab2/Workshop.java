@@ -23,9 +23,17 @@ public class Workshop<T extends Car> implements Loadable<T> {
         if (!vehicleSpots.isEmpty()) {
             System.out.println(vehicleSpots.getFirst().modelName);
             vehicleSpots.removeFirst();
+
         }
         else{
             System.out.println("No car in the workshop");
         }
+    }
+    public boolean isInWorkshop(Vehicle _vehicle){
+        for(Vehicle vehicle: vehicleSpots){
+            if (vehicle.getClass().equals(_vehicle.getClass()))
+                return true;
+        }
+        return false;
     }
 }

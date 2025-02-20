@@ -5,8 +5,8 @@ import java.awt.*;
 public class CarTransport<T extends Car> extends Truck implements Loadable<T>
 {
     Vehicle[] vehicleSpots = new Vehicle[5];
-    public CarTransport() {
-        super("CarTransport", 2, Color.blue, 630);
+    public CarTransport(double[] startingPosition) {
+        super("CarTransport", 2, Color.blue, 630, startingPosition);
     }
 
     @Override
