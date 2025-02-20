@@ -35,6 +35,8 @@ public class CarController {
         cc.vehicles.add(new Volvo240());
         cc.vehicles.add(new Scania());
 
+
+
         cc.workshops.add(new Saab95Workshop(5));
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -50,9 +52,9 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
                 vehicle.move();
+                System.out.println(vehicle);
                 int x = (int) Math.round(vehicle.getPosition()[0]);
                 int y = (int) Math.round(vehicle.getPosition()[1]);
-
                 if (0 <= x && x < frame.drawPanel.getWidth() && 0 <= y && y < frame.drawPanel.getHeight()){
                     frame.drawPanel.moveit(x,y,vehicle);
                 }
@@ -70,13 +72,6 @@ public class CarController {
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
-
-            if (Math.abs(frame.drawPanel.saab95Point.getX() - frame.drawPanel.saab95WorkshopPoint.getX()) <= 5 ||
-                    Math.abs(frame.drawPanel.saab95Point.getY() - frame.drawPanel.saab95WorkshopPoint.getY()) <= 5){
-
-
-
-                }
         }
     }
 

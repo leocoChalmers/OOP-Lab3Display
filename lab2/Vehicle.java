@@ -12,11 +12,12 @@ public abstract class Vehicle implements Movable {
     protected int direction = 0; //0 = North, 1 = East, 2 = South, 3 = West
     protected String modelName;
 
-    public Vehicle(String modelName, int nrDoors, Color color, double enginePower){
+    public Vehicle(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition){
         this.modelName = modelName;
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
+        this.position = startingPosition;
         stopEngine();
     }
 
