@@ -42,7 +42,7 @@ public class CarController {
         cc.frame = new CarView("CarSim 1.0", cc);
 
         // Start the timer
-        cc.timer.start();
+        cc.timer.start(); //lalallalalalallalalalalal
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
