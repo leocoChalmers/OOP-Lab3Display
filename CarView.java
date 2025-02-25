@@ -18,29 +18,29 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
+    private CarController carC;
 
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    private DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
-    JPanel controlPanel = new JPanel();
+    private JPanel controlPanel = new JPanel();
 
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
+    private JPanel gasPanel = new JPanel();
+    private JSpinner gasSpinner = new JSpinner();
     int gasAmount = 0;
-    JLabel gasLabel = new JLabel("Amount of gas");
+    private JLabel gasLabel = new JLabel("Amount of gas");
 
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
-    JButton turnRightButton = new JButton("Turn Right");
-    JButton turnLeftButton = new JButton("Turn left");
+    private JButton gasButton = new JButton("Gas");
+    private JButton brakeButton = new JButton("Brake");
+    private JButton turboOnButton = new JButton("Saab Turbo on");
+    private JButton turboOffButton = new JButton("Saab Turbo off");
+    private JButton liftBedButton = new JButton("Scania Lift Bed");
+    private JButton lowerBedButton = new JButton("Lower Lift Bed");
+    private JButton turnRightButton = new JButton("Turn Right");
+    private JButton turnLeftButton = new JButton("Turn left");
 
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
-    JButton unloadButton = new JButton("Unload vehicle");
+    private JButton startButton = new JButton("Start all cars");
+    private JButton stopButton = new JButton("Stop all cars");
+    private JButton unloadButton = new JButton("Unload vehicle");
 
     // Constructor
     public CarView(String framename, CarController cc){

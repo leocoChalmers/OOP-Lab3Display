@@ -27,6 +27,7 @@ public class CarController {
     ArrayList<Workshop> workshops = new ArrayList<>();
     //methods:
 
+    /////////////////////////////
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
@@ -42,10 +43,10 @@ public class CarController {
         // Start the timer
         cc.timer.start();
     }
-
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
+        /////////////////////////////////////////////////////////
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
@@ -73,7 +74,7 @@ public class CarController {
                 frame.drawPanel.moveit(x,y,vehicle);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
-
+        /// ////////////////////////////////////////////////////////////////
                 if(vehicle instanceof Saab95){
                     Saab95 saab95 = (Saab95) vehicle;
                     for(Workshop workshop : workshops){
@@ -82,14 +83,14 @@ public class CarController {
                             if(workshop.getAvailableSpots() > 0){
                                 workshop.loadVehicle(saab95);
                                 saab95.stopEngine();
-                        }
+                            }
                         }
                     }
                 }
             }
         }
     }
-
+    //////////////////////////////////////////////////
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
@@ -157,4 +158,5 @@ public class CarController {
      //       workshop.unloadVehicle();
         //}
     //}
+    ///////////////////////////////////////////////////////////////
 }

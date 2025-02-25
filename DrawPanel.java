@@ -19,17 +19,17 @@ public class DrawPanel extends JPanel{
     //HashMap<Vehicle, BufferedImage> imagevehicle = new HashMap<>();
 
     // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
+    private BufferedImage volvoImage;
     // To keep track of a single car's position
     protected Point volvoPoint = new Point(0,100);
 
-    BufferedImage saab95Image;
+    private BufferedImage saab95Image;
     protected Point saab95Point = new Point(0,0);
 
-    BufferedImage scaniaImage;
+    private BufferedImage scaniaImage;
     protected Point scaniaPoint = new Point(0, 200);
 
-    BufferedImage saab95WorkshopImage;
+    private BufferedImage saab95WorkshopImage;
     protected Point saab95WorkshopPoint = new Point (200, 300);
 
 
@@ -78,7 +78,6 @@ public class DrawPanel extends JPanel{
         {
            ex.printStackTrace();
         }
-
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
