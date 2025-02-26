@@ -51,6 +51,9 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
                 vehicle.move();
+                if(vehicle instanceof Scania){
+                    System.out.println(((Scania) vehicle).getBedAngle());
+                }
                 //System.out.println(vehicle);
                 int x = (int) Math.round(vehicle.getPosition()[0]);
                 int y = (int) Math.round(vehicle.getPosition()[1]);

@@ -27,6 +27,7 @@ abstract class Truck extends Vehicle{
     public int getBedAngle(){
         return bedAngle;
     }
+
     @Override
     public void gas(double amount){
         if (bedAngle == 0){
@@ -37,5 +38,13 @@ abstract class Truck extends Vehicle{
         }
         else
             throw new IllegalArgumentException("bedAngle is not 0");
+    }
+
+    @Override
+    public void startEngine(){
+        if (bedAngle == 0){
+            currentSpeed = 0.1;
+            engineOn = true;
+        }
     }
 }
