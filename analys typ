@@ -1,0 +1,64 @@
+UPPGIFT 2:
+med avseende på cohesion, coupling och DIP
+
+Nödvändiga beroenden :
+Allt kopplat till fordonen (bör vara indirekt, ska fixa det), speciellt carcontroller är beroende av nästan allt (låg cohesion)
+CarController och CarView
+
+Onödiga beroenden: 
+CarController ska inte vara beroende av workshops
+
+Finns det starkare beroenden än nödvändigt?
+CarController och fordon bör vara indirket beroende och inte lika starkt
+
+Identifiera brott mot övriga designprinciper: 
+
+
+UPPGIFT 3:
+analysera med avseende på SRP och SOC
+
+Vilka ansvarsområden har klasserna?
+
+CarController - initiera fordon, hantera workshops, fordonens rörelse (semi), kopplingen mellan fordon och workshops.
+
+CarView - länken mellan frontend och backend (knappar och kod)
+
+DrawPanel - ansvar för att rita upp fordon och verkstäder samt hålla koll på bilarnas positioner
+
+Vilka anledningar har de att förändras?
+
+CarController - mest riskabel att förstöra kod, då den har flera ansvarsområden och därmed kan det bli svårt att ändra kod utan att förstöra kod.
+
+CarView - är bra, har inga konkreta anledningar att ändra på utan snarare utveckla och lägga till.
+
+DrawPanel - eventuellt om bilarna ska ha andra startpositioner, 
+
+På vilka klasser skulle ni behöva tillämpa dekomposition för att bättre följa SOC och SRP?
+CarController, en ny klass som hanterar kollisioner (collisionControll), en klass som hanterar workshop delen (observer pattern och controlWorkshop)
+
+
+UPPGIFT 4:
+Varför är våra förbättringar verkligen bättre?
+CarController får ett tydligare ansvar (bryter inte mot SRP), bättre hantering vid inlämning av bilar, interface ger mer flexibilitet, 
+
+Refaktoriseringsplan:
+
+Göra IsCar (interface) och IsTruck (Interface)
+Dela upp CarController till CollisionControl, ControlVehicle, controlWorkshop
+Skapa ett Observer Pattern (kopplat till workshop)
+Dela upp DrawPanel (?)
+
+Finns det några delar av planen som går att utföra parallellt, av olika utvecklare som arbetar oberoende av varandra? Om inte, finns det något sätt att omformulera planen så att en sådan arbetsdelning är möjlig?
+Ja det går, om en jobbar med controlVehicle, en med controlWorkshop och en med Carcontroller går det ändå semi (klasserna är beroende av varandra så man måste ha lite kommunikation för att veta hur koden är skriven)
+
+
+
+
+
+
+
+
+TODO:
+Scania fixa så att den inte kör när vinkeln != 0
+Göra ett till interface till som CarView implementerar för att få bort dubbelpil mellan carview och controller
+UML lägga till allt som inte är private
